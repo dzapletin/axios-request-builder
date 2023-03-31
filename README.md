@@ -70,7 +70,7 @@ const client = axios.create({
 const req = new RequestBuilder(client);
 ```
 
-## Building requests
+## Building Requests
 
 Build a request URL using chainable properties:
 
