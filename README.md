@@ -179,11 +179,11 @@ req.headers({
   'X-Custom-Header': 'foobar'
 });
 // is the same as
-req.config(
+req.config({
   headers: {
     'X-Custom-Header': 'foobar'
   }
-);
+});
 ```
 
 **params()**
@@ -193,11 +193,11 @@ req.params({
   'foo': 'bar'
 });
 // is the same as
-req.config(
+req.config({
   params: {
     'foo': 'bar'
   }
-);
+});
 ```
 
 **transform()**
@@ -207,11 +207,11 @@ req.transform(function (data, headers) {
   return data;
 });
 // is the same as
-req.config(
+req.config({
   transformResponse: [function (data, headers) {
     return data; 
   }]
-);
+});
 ```
 
 **signal()**
@@ -221,9 +221,9 @@ const controller = new AbortController();
 
 req.signal(controller.signal);
 // is the same as
-req.config(
+req.config({
   signal: controller.signal
-);
+});
 ```
 
 ## Abort Controller

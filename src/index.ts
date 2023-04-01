@@ -12,6 +12,10 @@ abstract class __AxiosRequestBuilder<C extends __AxiosRequestBuilder<any>> {
     private requestConfig: AxiosRequestConfig = {}
   ) {}
 
+  getAxios() {
+    return this.axios;
+  }
+
   getUrl() {
     return this.urlComponents.join("/");
   }
@@ -21,10 +25,14 @@ abstract class __AxiosRequestBuilder<C extends __AxiosRequestBuilder<any>> {
   }
 
   $(component: string | number | Array<string | number>) {
-    return new (this.constructor as { new (...args: any[]): C })(this.axios, [
-      ...this.urlComponents,
-      ...(Array.isArray(component) ? component.map(String) : [component.toString()]),
-    ]);
+    return new (this.constructor as { new (...args: any[]): C })(
+      this.axios,
+      [
+        ...this.urlComponents,
+        ...(Array.isArray(component) ? component.map(String) : [component.toString()]),
+      ],
+      this.requestConfig
+    );
   }
 
   config(conf: AxiosRequestConfig) {
